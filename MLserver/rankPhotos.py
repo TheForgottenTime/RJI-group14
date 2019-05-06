@@ -20,5 +20,4 @@ def rankData(inputfilepath):
 
     return ranking
 
-print(rankData('/20170909_MuSc/1q/20170909_MizzouSouthCarolina_EC_454.JPG'))
-print('finisned')
+
