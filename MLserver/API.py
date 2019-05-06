@@ -17,9 +17,10 @@ def home():
         filepath = str(request.form.get('filepath'))
         print(filepath)
         return str(rankPhotos.rankData(filepath))
-        print('finished api call')
+        #print('finished api call')
     else:
         print('no filepath')
         return "bad filepath"
+
 
 app.run()
