@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<body>
+<form action="uploadFile.php" method="post" enctype="multipart/form-data">
+    Select image to upload:
+    <input type="file" name="fileToUpload" id="fileToUpload">
+    <input type="submit" value="Upload Image" name="submit">
+</form><br>
+<form action="uploadURL.php" method="post" enctype="multipart/form-data">
+    Select image to upload:
+    <input type="text" name="fileToUpload" id="fileToUpload">
+    <input type="submit" value="Upload Image" name="submit">
+</form>
+
+</body>
+</html>

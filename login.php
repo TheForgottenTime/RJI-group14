@@ -9,7 +9,8 @@
         header("Location: http://ec2-18-216-214-86.us-east-2.compute.amazonaws.com/login.html");
         die();
     }   
-
+    
+    //protecting from SQL injection
     $username = mysqli_real_escape_string($database, $_POST['username']);
     $password = mysqli_real_escape_string($database, $_POST['password']); 
     $sql = "SELECT * FROM User WHERE User='$username' AND Pass='$password'";
@@ -20,10 +21,12 @@
 
     $count = mysqli_num_rows($result);
 
+    // if result is returned set a cookie and redirect to index
     if($count) {
         setcookie("username", $username, time() + (86400 * 30), "/");
         header("location: http://ec2-18-216-214-86.us-east-2.compute.amazonaws.com");
     }
+    // if not reload page
     else {
         header("location: http://ec2-18-216-214-86.us-east-2.compute.amazonaws.com/login.html");
     }

@@ -2,6 +2,7 @@
 <?php
     session_start();
 
+    // if not logged in redirect to login.html
     if (!$_COOKIE['username']){
         header("location: http://ec2-18-216-214-86.us-east-2.compute.amazonaws.com/login.html");
     }
@@ -10,7 +11,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login</title>
+	<title>Upload</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
@@ -24,20 +25,55 @@
 	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
+    <style>
+    .navbar {
+        overflow: hidden;
+        background-color:#E6E6E6;
+        position: fixed; /* Set the navbar to fixed position */
+        top: 0; /* Position the navbar at the top of the page */
+        width: 100%; /* Full width */
+        z-index: 100;
+    }
+
+    .navbar a {
+        float: left;
+        display: block;
+        color: 	#B4B3BB;
+        text-align: center;
+        padding: 14px 16px;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    /* Change background on mouse-over */
+    .navbar a:hover {
+        background: #ddd;
+    }
+    #title {
+        color: cornflowerblue;
+        font-size: 1em;
+    }
+    
+    </style>
 </head>
 
     
 <body>	
+    <div class="navbar">
+        <a href="index.php" id='title'>Reynolds Journalism Institute</a>
+        <a href="/search.php">Search Images</a>
+        <a href="/upload.php">Upload Images</a>
+        <a href="/delete.php">Delete Marked Images</a>
+    </div>
     <div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-t-50 p-b-90">
 				<form class="login100-form validate-form flex-sb flex-w" action="uploadImage.php" method="post">
 					<span class="login100-form-title p-b-51">
-						Upload Image
+						Upload Images
 					</span>
 
 					<div class="wrap-input100 validate-input m-b-16" data-validate = "Filepath is required">
-						<input class="input100" type="text" name="filepath" placeholder="File Path">
+						<input class="input100" type="text" name="filepath" placeholder="Directory">
 						<span class="focus-input100"></span>
 					</div>
 
