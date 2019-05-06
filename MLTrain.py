@@ -1,7 +1,20 @@
-#import tensorflow/keras
-#define model as global
+import tensorflow as tf
+from tensorflow import keras
+
+import modelLoad
 
 def trainModel():
-    #takes the global model object and trains it, saving it to a defined file path. Returns 0 if no errors
+    
+
+    #todo add train post data normalization
+    return 0
+
+
+def getDataset():
+
+    return 0
+
+def generateArrays():
+
     return 0
 

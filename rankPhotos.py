@@ -1,8 +1,23 @@
-#import tensorflow/keras
+import tensorflow as tf
+from tensorflow import keras
+import modelLoad
+import normalizePictures
+import numpy as np
 
 
-#gather model from stored filepath
 
-def sortData(inputfilepath, outputfilepath):
-    #runs ML model against the dataset of photos, stores sorted data in the output file path.
-    return 0
+
+
+def rankData(inputfilepath):
+    #runs ML model against the dataset of photos
+    inputImageArray = normalizePictures.normalizepicture(inputfilepath)
+    predictions = modelLoad.rankingModel.predict(inputImageArray)
+    
+    ranking = np.argmax(predictions[0])
+
+
+
+    return ranking
+
+print(rankData('/20170909_MuSc/1q/20170909_MizzouSouthCarolina_EC_454.JPG'))
+print('finisned')
