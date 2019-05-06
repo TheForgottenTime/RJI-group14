@@ -10,8 +10,9 @@ import numpy as np
 
 def rankData(inputfilepath):
     #runs ML model against the dataset of photos
+    rankingModel = modelLoad.loadranking()
     inputImageArray = normalizePictures.normalizepicture(inputfilepath)
-    predictions = modelLoad.rankingModel.predict(inputImageArray)
+    predictions = rankingModel.predict(inputImageArray)
     
     ranking = np.argmax(predictions[0])
 
