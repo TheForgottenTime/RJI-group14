@@ -88,6 +88,7 @@
 <body>	
     <div class="navbar">
         <a href="index.php" id='title'>Reynolds Journalism Institute</a>
+        <a href="/logout.php">Logout</a>
         <a href="/search.php">Search Images</a>
         <a href="/upload.php">Upload Images</a>
         <a href="/delete.php">Delete Marked Images</a>

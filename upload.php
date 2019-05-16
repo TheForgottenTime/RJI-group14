@@ -26,32 +26,41 @@
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
     <style>
-    .navbar {
-        overflow: hidden;
-        background-color:#E6E6E6;
-        position: fixed; /* Set the navbar to fixed position */
-        top: 0; /* Position the navbar at the top of the page */
-        width: 100%; /* Full width */
-        z-index: 100;
-    }
+        .navbar {
+            overflow: hidden;
+            background-color:#E6E6E6;
+            position: fixed; /* Set the navbar to fixed position */
+            top: 0; /* Position the navbar at the top of the page */
+            width: 100%; /* Full width */
+            z-index: 100;
+        }
 
-    .navbar a {
-        float: left;
-        display: block;
-        color: 	#B4B3BB;
-        text-align: center;
-        padding: 14px 16px;
-        font-family: 'Roboto', sans-serif;
-    }
+        .navbar a {
+            float: left;
+            display: block;
+            color: 	#B4B3BB;
+            text-align: center;
+            padding: 14px 16px;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .description {
+            margin-top: -2em;
+            margin-bottom: 1em;
+            padding: 0;
+        }
 
-    /* Change background on mouse-over */
-    .navbar a:hover {
-        background: #ddd;
-    }
-    #title {
-        color: cornflowerblue;
-        font-size: 1em;
-    }
+        /* Change background on mouse-over */
+        .navbar a:hover {
+            background: #ddd;
+        }
+        #title {
+            color: cornflowerblue;
+            font-size: 1em;
+        }
+        #link {
+            font-size: 1em;
+        }
     
     </style>
 </head>
@@ -60,6 +69,7 @@
 <body>	
     <div class="navbar">
         <a href="index.php" id='title'>Reynolds Journalism Institute</a>
+        <a href="/logout.php">Logout</a>
         <a href="/search.php">Search Images</a>
         <a href="/upload.php">Upload Images</a>
         <a href="/delete.php">Delete Marked Images</a>
@@ -71,6 +81,10 @@
 					<span class="login100-form-title p-b-51">
 						Upload Images
 					</span>
+                    
+                    <span class="description">
+                        Upload directories must be hosted on <a id= "link" href="http://rji.augurlabs.io">augurlabs.io</a><br>
+                    </span>
 
 					<div class="wrap-input100 validate-input m-b-16" data-validate = "Filepath is required">
 						<input class="input100" type="text" name="filepath" placeholder="Directory">

@@ -77,12 +77,13 @@
         position: relative;
         transition: color 0.3s;
         text-decoration: none;
+        z-index: 0;
     }
     .img-block {
         position: relative;
         color: white;
         max-width: 30em;
-        height: auto;
+        height: 310px;
     }
     .img-text {
         position: absolute;
@@ -121,13 +122,19 @@
     .img-responsive.delete {
         border: 4px solid red;
     }
+    .loading {
+        background: url('http://ec2-18-216-214-86.us-east-2.compute.amazonaws.com/animation.gif') center no-repeat;
+        max-width: 30em;
+        height: 340px;
+    }
 </style>
     
 </head>
 <body>
 	
 <div class="navbar">
-    <a href="index.php" id='title'>Reynolds Journalism Institute</a>
+    <a href="" id='title'>Reynolds Journalism Institute</a>
+    <a href="/logout.php">Logout</a>
     <a href="/search.php">Search Images</a>
     <a href="/upload.php">Upload Images</a>
     <a href="/delete.php">Delete Marked Images</a>
@@ -154,13 +161,15 @@
         else if ($mark_delete == 'on' && !$mark_keep) {
             $query = '(KEEP = 0)';
         }
-        else {
+        else if (!mark_delete && mark_keep=='on') {
             $query = '(KEEP = 1)';
         }
+        else {
+            $query = '(KEEP = 0 OR KEEP = 1)';
+        }
         
-
         // forming search query from form data
-        $query = "SELECT Filepath, Rating, Keep FROM Photograph WHERE Rating >= $min AND Rating <= $max AND $query ORDER BY Rating";
+        $query = "SELECT Filepath, Rating, Keep FROM Photograph WHERE Rating >= $min AND Rating <= $max AND $query ORDER BY Rating DESC";
         $result = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD);
         mysqli_select_db($result,DB_DATABASE) or die("Could not select the databse." .mysqli_error());
         $image_query = mysqli_query($result,$query);
@@ -170,7 +179,7 @@
             $img_rating = $rows['Rating'];
             $img_src = $rows['Filepath'];
             $img_keep = $rows['Keep'];
-            echo "<div class='img-block'>";
+            echo "<div class='img-block loading'>";
             
             if ($img_keep == 0) {
                 echo "<img src='$img_src' title='$img_keep' alt='$img_rating' class='img-responsive delete'>";
@@ -217,6 +226,9 @@
                 }
             });
         }
+        $('img').load(function(){
+           $(this).css('background','none');
+        });
     </script>
 
 </body>
